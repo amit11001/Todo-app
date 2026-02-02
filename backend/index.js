@@ -25,7 +25,7 @@ app.post("/todo", async function(req,res){
     // put it in mongodb
     await todo.create({
         title: createPayload.title,
-        description: createPayload.descrition,
+        description: createPayload.description,
         completed: false
     })
     res.json({
@@ -42,7 +42,7 @@ app.put("/completed", async function(req,res){
         })
         return;
     }
-    await todo.update({
+    await todo.updateOne({
         _id: req.body.id
     }, {
         completed : true
@@ -51,3 +51,4 @@ app.put("/completed", async function(req,res){
         msg : "Todo marked as completed"
     })
 })
+app.listen(3000);
